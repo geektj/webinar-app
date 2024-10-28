@@ -56,6 +56,20 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
     startTime: "",
     endTime: "",
   }
+  const defaultWebinarState = {
+    id: 0,
+    instructor: {
+      name: "",
+      role: "",
+      company: "",
+      image: "",
+    },
+    topic: "",
+    title: "",
+    startDate: "",
+    startTime: "",
+    endTime: "",
+  };
   const [webinars, setWebinars] = useState<Webinar[]>([]);
   const [filteredWebinars, setFilteredWebinars] = useState<Webinar[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -72,6 +86,7 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
     startTime: "",
     endTime: "",
   });
+  const [selectedWebinar, setSelectedWebinar] = useState<Webinar>(defaultWebinarState);
   const [isEdit, setIsEdit] = useState(false);
 
   const handleAddWebinar = (webinar: Webinar) => {
@@ -79,6 +94,7 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
   };
 
   const handleModalClose = () => {
+    setSelectedWebinar(defaultWebinarState);
     setModalOpen(false);
   };
 
@@ -107,6 +123,7 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
       endTime: webinar ? webinar.endTime : "",
     }
     setWebinarData(populateData);
+    setSelectedWebinar(webinar);
     setIsEdit(true);
     setModalOpen(true);
   };
@@ -132,8 +149,9 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
       startTime,
       endTime,
     } = webinarData;
+    const webinarId = isEdit ? selectedWebinar?.id : Date.now();
     const newWebinar: Webinar = {
-      id: Date.now(),
+      id: webinarId,
       instructor: {
         name: instructorName,
         role: instructorRole,
@@ -156,6 +174,8 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
   };
 
   const handleOpenWebinarModal = () => {
+    setIsEdit(false);
+    setSelectedWebinar(defaultWebinarState);
     setWebinarData(defaultWebinarData);
     setModalOpen(true);
   }
