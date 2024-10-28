@@ -29,13 +29,13 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
     <Card
       variant="outlined"
       sx={{
-        width: "lg",
+        width: "100%",
         borderRadius: "24px",
         border: "1px solid #E3E7EC",
-        p: "20px",
+        // p: "20px",
       }}
     >
-      <CardContent sx={{ p: "0px" }}>
+      <CardContent sx={{ p: "20px"}}>
         <Box
           sx={{
             borderRadius: "16px",
