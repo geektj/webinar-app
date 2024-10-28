@@ -1,0 +1,60 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "instructor": {
+                "name": "Matthew Martin",
+                "role": "Lead Front End Developer",
+                "company": "Google",
+                "image": ""
+            },
+            "topic": "Front End Engineering",
+            "title": "React and React Native",
+            "startDate": "2024-10-22T00:00:00Z",
+            "startTime": "16:00",
+            "endTime": "17:00"
+        },
+        {
+            "id": 2,
+            "instructor": {
+                "name": "Ik Expert",
+                "role": "Leadership Role",
+                "company": "Amazon",
+                "image": ""
+            },
+            "topic": "Career",
+            "title": "Ask Me Anything",
+            "startDate": "2024-10-27T00:00:00Z",
+            "startTime": "15:00",
+            "endTime": "16:00"
+        },
+        {
+            "id": 3,
+            "instructor": {
+                "name": "Brian Holt",
+                "role": "Lead Backend Developer",
+                "company": "Netflix",
+                "image": ""
+            },
+            "topic": "Backend Engineering",
+            "title": "Nodejs and Expressjs",
+            "startDate": "2024-11-01T00:00:00Z",
+            "startTime": "17:00",
+            "endTime": "18:00"
+        },
+        {
+            "id": 4,
+            "instructor": {
+                "name": "Spiro Hequmi",
+                "role": "Lead Full Stack Developer",
+                "company": "Meta",
+                "image": ""
+            },
+            "topic": "Full stack engineering",
+            "title": "AWS",
+            "startDate": "2024-11-10T00:00:00Z",
+            "startTime": "08:00",
+            "endTime": "09:00"
+        }
+    ]
+}
