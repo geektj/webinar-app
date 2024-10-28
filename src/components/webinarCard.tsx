@@ -32,7 +32,6 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
         width: "100%",
         borderRadius: "24px",
         border: "1px solid #E3E7EC",
-        // p: "20px",
       }}
     >
       <CardContent sx={{ p: "20px"}}>
