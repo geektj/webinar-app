@@ -11,7 +11,7 @@ interface WebinarListProps {
 
 const WebinarList: React.FC<WebinarListProps> = ({ webinars, onDelete, onEdit }) => {
   return (
-    <div style={{display: 'flex', flexWrap: 'wrap', gap: '20px'}}>
+    <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' , gap: '20px'}}>
       {webinars.map((webinar) => (
         <WebinarCard key={webinar.id} webinar={webinar} onDelete={onDelete} onEdit={onEdit} />
       ))}
