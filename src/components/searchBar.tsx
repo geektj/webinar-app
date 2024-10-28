@@ -21,7 +21,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, onSearch }) => {
           </InputAdornment>
         ),
       }}
-      sx={{height: '44px', width: '400px'}}
+      sx={{
+        width: "380px",
+        "& .MuiInputBase-formControl": { height: "44px", borderRadius: "10px" },
+      }}
     />
   );
 };

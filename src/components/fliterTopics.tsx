@@ -22,7 +22,7 @@ const Filter: React.FC<FilterTopicProps> = ({ topic, onFilter }) => {
           </InputAdornment>
         ),
       }}
-      sx={{height: '44px', width: '220px'}}
+      sx={{ width: '220px', '& .MuiInputBase-formControl' : {height: '44px', borderRadius: '10px'}}}
     />
   );
 };
