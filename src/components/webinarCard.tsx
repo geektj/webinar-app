@@ -10,7 +10,8 @@ import {
 import { Webinar } from "../types/webinar";
 import { useTheme } from "@mui/material/styles";
 import DummyImg from "../assets/dummyImg.png";
-import { formatDate, formatTime, getRandomColor } from "../utils/helpers";
+import { formatDate, formatTime } from "../utils/helpers";
+import { useRandomColor } from "../utils/hooks/useRandomColor";
 
 interface WebinarCardProps {
   webinar: Webinar;
@@ -24,7 +25,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
   onEdit,
 }) => {
   const theme: any = useTheme();
-  const randomColor = getRandomColor() || theme.colors.color1;
+  const { color } = useRandomColor();
 
   const formattedDate = formatDate(webinar.startDate);
   const formattedStartTime = formatTime(webinar.startTime);
@@ -42,7 +43,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
         <Box
           sx={{
             borderRadius: "16px",
-            background: `${randomColor}`,
+            background: `${color}`,
             p: "24px 20px",
             display: "flex",
             justifyContent: "space-between",
@@ -69,7 +70,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
         <Typography
           variant="h4"
           sx={{ pt: "10px", pb: "5px" }}
-          color={randomColor}
+          color={color}
         >
           {webinar.title}
         </Typography>
