@@ -29,7 +29,7 @@ const WebinarCard: React.FC<WebinarCardProps> = ({
     <Card
       variant="outlined"
       sx={{
-        width: "380px",
+        width: "lg",
         borderRadius: "24px",
         border: "1px solid #E3E7EC",
         p: "20px",

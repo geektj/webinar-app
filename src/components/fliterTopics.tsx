@@ -16,7 +16,7 @@ const Filter: React.FC<FilterTopicProps> = ({ topic, onFilter }) => {
       onChange={(e) => onFilter(e.target.value)}
       placeholder='Topic'
       InputProps={{
-        startAdornment: (
+        endAdornment: (
           <InputAdornment position="end">
             <AngleDownIcon />
           </InputAdornment>

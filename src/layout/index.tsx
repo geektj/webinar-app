@@ -21,7 +21,7 @@ export const Layout = () => {
   } = useContext(LayoutContext);
 
   return (
-    <Container>
+    <Container maxWidth="lg" >
       <Box
         sx={{
           borderBottom: "1px solid #E3E7EC",
