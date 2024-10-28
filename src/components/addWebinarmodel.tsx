@@ -22,8 +22,13 @@ export const AddWebinarModal: React.FC = () => {
     handleModalClose,
     modalOpen,
     webinarData,
+    // setWebinarData,
     isEdit,
   } = useContext(LayoutContext);
+
+  const currentDate = new Date();
+  const currentDateString = currentDate.toISOString().split("T")[0]; // YYYY-MM-DD
+  const currentTimeString = currentDate.toTimeString().split(" ")[0].slice(0, 5);
 
   // const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
   //   const file = event.target.files?.[0];
@@ -45,6 +50,7 @@ export const AddWebinarModal: React.FC = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setImage(reader.result); // Set the image data URL
+        // setWebinarData()
       };
       reader.readAsDataURL(file); // Read the file as a data URL
     }
@@ -130,7 +136,6 @@ export const AddWebinarModal: React.FC = () => {
                       sx={{
                         width: "100%",
                         "& .MuiInputBase-formControl": {
-                          // width: "380px",
                           height: "44px",
                           background: "#F2F4F8",
                           border: "1px solid #E3E7EC",
@@ -155,7 +160,6 @@ export const AddWebinarModal: React.FC = () => {
                       sx={{
                         width: "100%",
                         "& .MuiInputBase-formControl": {
-                          // width: "380px",
                           height: "44px",
                           background: "#F2F4F8",
                           border: "1px solid #E3E7EC",
@@ -180,7 +184,6 @@ export const AddWebinarModal: React.FC = () => {
                       sx={{
                         width: "100%",
                         "& .MuiInputBase-formControl": {
-                          // width: "380px",
                           height: "44px",
                           background: "#F2F4F8",
                           border: "1px solid #E3E7EC",
@@ -214,7 +217,6 @@ export const AddWebinarModal: React.FC = () => {
                         borderRadius: "10px",
                         padding: 2,
                         width: "135px",
-                        // height: '1px',
                         cursor: "pointer", 
                         background: '#F2F4F8'
                       }}
@@ -231,7 +233,6 @@ export const AddWebinarModal: React.FC = () => {
                             width: "100%",
                             height: "auto",
                             borderRadius: "10px",
-                            // marginBottom: 2,
                           }}
                         />
                       ) : (
@@ -274,7 +275,6 @@ export const AddWebinarModal: React.FC = () => {
                       sx={{
                         width: "100%",
                         "& .MuiInputBase-formControl": {
-                          // width: "380px",
                           height: "44px",
                           background: "#F2F4F8",
                           border: "1px solid #E3E7EC",
@@ -346,6 +346,7 @@ export const AddWebinarModal: React.FC = () => {
                       onChange={handleWebinarChange}
                       value={webinarData.startDate}
                       InputLabelProps={{ shrink: true }}
+                      inputProps={{ min: currentDateString }}
                       placeholder="Type Start Date"
                       sx={{
                         width: "100%",
@@ -373,6 +374,7 @@ export const AddWebinarModal: React.FC = () => {
                       value={webinarData.startTime}
                       InputLabelProps={{ shrink: true }}
                       placeholder="Type Start Time"
+                      inputProps={{ min: currentTimeString }}
                       sx={{
                         width: "100%",
                         "& .MuiInputBase-formControl": {

@@ -5,6 +5,7 @@ import {
   FormControl,
   Select,
   MenuItem,
+  Typography,
 } from "@mui/material";
 import { AngleDownIcon } from "../assets/icons";
 import { LayoutContext } from "../context/layoutWrapper";
@@ -39,11 +40,11 @@ const Filter: React.FC<FilterTopicProps> = () => {
           }}
         >
           <MenuItem value="">
-            <em>All Topics</em>
+            <Typography variant="h5">All Topics</Typography>
           </MenuItem>
           {uniqueTopics.map((topic, index) => (
             <MenuItem key={index} value={topic}>
-              {topic}
+              <Typography variant="h5">{topic}</Typography>
             </MenuItem>
           ))}
         </Select>
