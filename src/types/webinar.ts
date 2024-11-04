@@ -2,7 +2,7 @@ export interface Instructor {
   name: string;
   role: string;
   company: string;
-  image: string; // URL or base64 string for the image
+  image: string; 
 }
 
 export interface Webinar {
@@ -10,7 +10,7 @@ export interface Webinar {
   instructor: Instructor;
   topic: string;
   title: string;
-  startDate: string; // ISO date string
-  startTime: string; // HH:mm format
-  endTime: string; // HH:mm format
+  startDate: string; 
+  startTime: string;
+  endTime: string;
 }
