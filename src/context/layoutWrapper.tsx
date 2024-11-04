@@ -5,7 +5,6 @@ import webinarDefaultData from '../utils/data.json';
 interface LayoutContextType {
   webinars: Webinar[];
   searchTerm: string;
-  filteredWebinars: Webinar[];
   filterTopic: string;
   modalOpen: boolean;
   isEdit: boolean;
@@ -25,7 +24,6 @@ interface LayoutContextType {
 export const LayoutContext = createContext<LayoutContextType>({
   webinars: [],
   searchTerm: "",
-  filteredWebinars: [],
   filterTopic: "",
   modalOpen: false,
   webinarData: {},
@@ -71,7 +69,6 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
     endTime: "",
   };
   const [webinars, setWebinars] = useState<Webinar[]>([]);
-  const [filteredWebinars, setFilteredWebinars] = useState<Webinar[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterTopic, setFilterTopic] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
@@ -99,7 +96,7 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
   };
 
   const handleDeleteWebinar = (id: number) => {
-    setFilteredWebinars((prev) => prev.filter((webinar) => webinar.id !== id));
+    setWebinars((prev) => prev.filter((webinar) => webinar.id !== id));
   };
 
   const handleEditSubmit = (updatedWebinar: Webinar) => {
@@ -181,18 +178,6 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
   }
 
   useEffect(() => {
-    if (webinars.length) {
-      const filteredData = webinars.filter((webinar) => {
-        return (
-          webinar.title?.toLowerCase().includes(searchTerm?.toLowerCase()) &&
-          webinar.topic?.toLowerCase().includes(filterTopic?.toLowerCase())
-        );
-      });
-      setFilteredWebinars(filteredData);
-    }
-  }, [webinars, searchTerm, filterTopic]);
-
-  useEffect(() => {
     const data: Webinar[] = webinarDefaultData?.data;
     setWebinars(data);
   }, []);
@@ -200,7 +185,6 @@ export const LayoutWrapper: React.FC<{ children: ReactNode }> = ({
   const config = {
     webinars,
     searchTerm,
-    filteredWebinars,
     filterTopic,
     modalOpen,
     webinarData,

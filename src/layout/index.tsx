@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Container, Button, Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { AddWebinarModal } from "../components/addWebinarmodel";
@@ -6,12 +6,14 @@ import WebinarList from "../components/webinarList";
 import SearchBar from "../components/searchBar";
 import Filter from "../components/fliterTopics";
 import { LayoutContext } from "../context/layoutWrapper";
+import { Webinar } from "../types/webinar";
 
 export const Layout = () => {
   const theme: any = useTheme();
+  const [filteredWebinars, setFilteredWebinars] = useState<Webinar[]>([]);
   const {
     searchTerm,
-    filteredWebinars,
+    webinars,
     filterTopic,
     setFilterTopic,
     setSearchTerm,
@@ -19,6 +21,18 @@ export const Layout = () => {
     handleEditWebinar,
     handleOpenWebinarModal
   } = useContext(LayoutContext);
+
+  useEffect(() => {
+    if (webinars.length) {
+      const filteredData = webinars.filter((webinar) => {
+        return (
+          webinar.title?.toLowerCase().includes(searchTerm?.toLowerCase()) &&
+          webinar.topic?.toLowerCase().includes(filterTopic?.toLowerCase())
+        );
+      });
+      setFilteredWebinars(filteredData);
+    }
+  }, [webinars, searchTerm, filterTopic]);
 
   return (
     <Container maxWidth="lg" >
